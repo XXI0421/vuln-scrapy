@@ -7,7 +7,7 @@ by XXI
 
 1.先在config.yaml文件的fofa账户填入你的email和key，然后写入环境变量
 
-2.然后直接运行recon.py即可
+2.然后直接运行run_all.py即可
 
 常见报错原因：
 1.环境变量没有配置

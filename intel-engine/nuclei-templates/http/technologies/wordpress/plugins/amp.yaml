@@ -1,0 +1,49 @@
+id: wordpress-amp
+
+info:
+  name: AMP Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/amp/
+  metadata:
+    plugin_namespace: amp
+    wpscan: https://wpscan.com/plugin/amp
+  tags: tech,wordpress,wp-plugin,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/amp/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/amp.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 490a00463044022070a9b84f929c122466df1796625195d3ac8bc0479aecbdb7f43d84d7dfb704b102200f57dc03194b5d837805b1513ae1662d2b65d19fd6574c0cb9c8fa72077dc59a:922c64590222798bb761d5b6d8e72950

@@ -1,0 +1,49 @@
+id: wordpress-backuply
+
+info:
+  name: Backuply – Backup, Restore, Migrate and Clone Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/backuply/
+  metadata:
+    plugin_namespace: backuply
+    wpscan: https://wpscan.com/plugin/backuply
+  tags: tech,wordpress,wp-plugin,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/backuply/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/backuply.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 4b0a00483046022100dd4a917828113f3c913ef424162765dab6ac22bf7cee7af8dd4d1c4dadbfae0d022100ffd34bd6ca8a93a1dae4304cd609f079bd8a951b29a9f4d3c3ed0ccca103010c:922c64590222798bb761d5b6d8e72950

@@ -1,0 +1,49 @@
+id: wordpress-instagram-feed
+
+info:
+  name: Smash Balloon Social Photo Feed – Easy Social Feeds Plugin Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/instagram-feed/
+  metadata:
+    plugin_namespace: instagram-feed
+    wpscan: https://wpscan.com/plugin/instagram-feed
+  tags: tech,wordpress,wp-plugin,top-100,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/instagram-feed/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/instagram-feed.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 490a004630440220428c68071524c2dd7039e4d5833e16843ffcb49f215567af44d2ea5e62f95ddf02203c49e77af3bb4dd867177599d254094c2ef54f86d5faf5974a13911ec4809e45:922c64590222798bb761d5b6d8e72950

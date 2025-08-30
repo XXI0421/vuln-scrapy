@@ -1,0 +1,49 @@
+id: wordpress-duplicate-post
+
+info:
+  name: Yoast Duplicate Post Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/duplicate-post/
+  metadata:
+    plugin_namespace: duplicate-post
+    wpscan: https://wpscan.com/plugin/duplicate-post
+  tags: tech,wordpress,wp-plugin,top-100,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/duplicate-post/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/duplicate-post.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 4a0a0047304502210083170dd7dfa5c7b6f1b8bcf8348dbb70bc3ae9e70cc11ebeae310991141c3fca022015c5f12f48b5cb072adc30c5382f47da2b461e8c99daf29105e27f7b7298973b:922c64590222798bb761d5b6d8e72950

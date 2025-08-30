@@ -1,0 +1,49 @@
+id: wordpress-so-widgets-bundle
+
+info:
+  name: SiteOrigin Widgets Bundle Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/so-widgets-bundle/
+  metadata:
+    plugin_namespace: so-widgets-bundle
+    wpscan: https://wpscan.com/plugin/so-widgets-bundle
+  tags: tech,wordpress,wp-plugin,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/so-widgets-bundle/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/so-widgets-bundle.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 4a0a00473045022027f84d8ed51afb7bd3de98481ea3a3aacc5b2b5f55eecdef7a8d8df61407ae06022100d995c8023be397a002f81b5742b7e397177eea69a55486f6561a09d9dae4561c:922c64590222798bb761d5b6d8e72950

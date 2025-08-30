@@ -1,0 +1,49 @@
+id: wordpress-contact-form-7-honeypot
+
+info:
+  name: CF7Apps – All Essential Extensions for Contact Form 7 [Honeypot for CF7, hCAPTCHA, and more] Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/contact-form-7-honeypot/
+  metadata:
+    plugin_namespace: contact-form-7-honeypot
+    wpscan: https://wpscan.com/plugin/contact-form-7-honeypot
+  tags: tech,wordpress,wp-plugin,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/contact-form-7-honeypot/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/contact-form-7-honeypot.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 4a0a004730450220618d8019ef01e3d4f4d473add069ccd52ee0f22397a1f36f5e7ec6eb60fb959d022100dc28954127d8eeebe57fefbcf51bd6a60521f9cb50f57b039b7e77962304f0c1:922c64590222798bb761d5b6d8e72950

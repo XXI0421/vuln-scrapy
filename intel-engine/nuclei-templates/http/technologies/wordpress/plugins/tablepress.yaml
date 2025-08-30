@@ -1,0 +1,49 @@
+id: wordpress-tablepress
+
+info:
+  name: TablePress – Tables in WordPress made easy Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/tablepress/
+  metadata:
+    plugin_namespace: tablepress
+    wpscan: https://wpscan.com/plugin/tablepress
+  tags: tech,wordpress,wp-plugin,top-100,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/tablepress/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/tablepress.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 4a0a0047304502207bb431ed462b4e7e4f49920b53648f63e5be6e50af636073fc307dd53e581083022100d143bc63a130650cc52b5b3d13dc31c463ed7ad30e0b1ccaa4b18d771b074ebd:922c64590222798bb761d5b6d8e72950

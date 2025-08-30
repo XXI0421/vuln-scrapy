@@ -1,0 +1,33 @@
+# FOFA 账户
+fofa:
+  email: "om2bg0xgmj9njrxlulz57d-sbtoe@open_wechat" # 你的fofa-email
+  key: "d2a651b25c1ede0c3cddf8c2fd815faa" # 你的fofa-key
+  query: 'app="Apache-Solr" && port="8983" && is_honeypot="false"' # 查询语句
+  size: 50
+  fields: "ip,port,protocol,host,title,banner"
+
+# 路径全部用「相对当前脚本」的写法
+paths:
+  tools_dir: "nuclei"           # 放 nuclei、httpx 二进制
+  output_dir: "clean"        # 直接复用已有 clean/ 目录
+  assets_csv: "today_assets.xlsx"
+  alive_txt: "clean/alive.txt"
+  vulns_csv: "clean/vulns.csv"
+
+# nuclei 参数
+nuclei:
+  templates: "nuclei-templates/"   # 模板路径
+  severity: "critical,high,medium"
+  threads: 800
+  rate_limit: 500
+
+# 钉钉/飞书推送（可选）
+notify:
+  webhook: ""
+
+# 新增 SQLite 配置（字段名按你实际表结构）
+sqlite:
+  db: "intel.db"       # 数据库文件名
+  table: "assets"      # 表名
+  col_ip: "ip"
+  col_port: "port"

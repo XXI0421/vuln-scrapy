@@ -1,0 +1,279 @@
+[
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "139.162.244.247:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "110.41.48.28:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "CVE-2018-2893",
+    "host": "114.115.219.15:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "190.92.244.201:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "CVE-2024-45216",
+    "host": "141.94.76.232:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "208.76.255.116:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "104.251.210.45:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "143.198.57.137:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "170.210.225.71:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "143.107.127.26:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "65.21.188.245:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "5.196.96.147:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "51.91.93.130:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "143.198.57.137:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "159.89.117.233:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "104.251.210.45:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "170.210.225.71:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "143.107.127.26:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "35.180.159.69:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "65.21.188.245:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "92.222.85.35:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "173.225.198.25:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "206.189.48.88:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "194.58.88.3:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "ldap-anonymous-login-detect",
+    "host": "91.245.78.253:8983",
+    "severity": "medium",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "194.58.88.3:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "213.108.241.205:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "40.89.134.190:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "69.36.48.105:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "46.246.44.230:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "40.89.134.190:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "4.210.147.219:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "103.224.240.231:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "67.207.163.188:8983",
+    "severity": "critical",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "165.22.229.168:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "14.22.76.161:8983",
+    "severity": "high",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "CVE-2023-50290",
+    "host": "94.23.77.204:8983",
+    "severity": "medium",
+    "risk_score": 0.218
+  },
+  {
+    "template-id": "CVE-2020-1938",
+    "host": "58.34.17.166:8983",
+    "severity": "critical"
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "207.180.247.132:8983",
+    "severity": "high"
+  },
+  {
+    "template-id": "CVE-2023-50290",
+    "host": "104.248.110.46:8983",
+    "severity": "medium"
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "207.180.247.132:8983",
+    "severity": "critical"
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "40.76.31.142:8983",
+    "severity": "critical"
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "208.76.255.115:8983",
+    "severity": "high"
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "35.187.38.22:8983",
+    "severity": "high"
+  },
+  {
+    "template-id": "CVE-2023-50290",
+    "host": "34.45.230.47:8983",
+    "severity": "medium"
+  },
+  {
+    "template-id": "logstash-log4j-rce",
+    "host": "46.8.141.206:8983",
+    "severity": "critical"
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "46.8.141.206:8983",
+    "severity": "high"
+  },
+  {
+    "template-id": "apache-solr-file-read",
+    "host": "65.108.136.181:8983",
+    "severity": "high"
+  }
+]

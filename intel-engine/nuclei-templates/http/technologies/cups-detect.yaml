@@ -1,0 +1,43 @@
+id: cups-detect
+
+info:
+  name: CUPS - Detect
+  author: rxerium
+  severity: info
+  description: |
+    An instance running CUPS was detected.
+  metadata:
+    verified: true
+    max-request: 1
+    shodan-query: product:"CUPS (IPP)"
+  tags: cups,tech,detect
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "Web Interface is Disabled - CUPS"
+          - "Forbidden - CUPS"
+          - "Server: CUPS"
+        condition: or
+
+      - type: status
+        status:
+          - 200
+          - 404
+          - 403
+        condition: or
+
+    extractors:
+      - type: regex
+        part: body
+        name: version
+        regex:
+          - 'CUPS v([0-9.]+)>'
+# digest: 4b0a004830460221009f13ee216e2027181bc5437d8c745e72c3797d8a88f3825b1203ddcd18d5f09d022100ed334f4231b6fe7a109a04e2bc02724dec68452cef8a9bbca7d1cd78a6dce0fd:922c64590222798bb761d5b6d8e72950

@@ -1,0 +1,3 @@
+{"cve": "CVE-2025-1234", "cvss": 9.8, "description": "Apache Tomcat RCE", "patch_commit": "https://github.com/apache/tomcat/commit/abc123", "exp_url": "https://exploit-db.com/50505"}
+{"cve": "CVE-2025-5678", "cvss": 7.5, "description": "Spring Boot Actuator Exposure", "patch_commit": "", "exp_url": ""}
+{"cve": "CVE-2025-9999", "cvss": 8.1, "description": "Log4j2 JNDI Injection", "patch_commit": "https://github.com/apache/logging-log4j2/commit/def456", "exp_url": "https://github.com/xxx/log4j-poc"}

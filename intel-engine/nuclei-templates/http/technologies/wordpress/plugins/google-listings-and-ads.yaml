@@ -1,0 +1,49 @@
+id: wordpress-google-listings-and-ads
+
+info:
+  name: Google for WooCommerce Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/google-listings-and-ads/
+  metadata:
+    plugin_namespace: google-listings-and-ads
+    wpscan: https://wpscan.com/plugin/google-listings-and-ads
+  tags: tech,wordpress,wp-plugin,top-100,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/google-listings-and-ads/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/google-listings-and-ads.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 4b0a00483046022100cf36e0f20610604c583adae976995eb6ac8b707ee5611317402b934b16c4feb6022100eecaee27a3d01a374f40fdbb6a5f4f8b4ee9a7446a65ccfac222c37238354ace:922c64590222798bb761d5b6d8e72950

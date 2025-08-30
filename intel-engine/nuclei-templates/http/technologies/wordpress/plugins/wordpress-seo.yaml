@@ -1,0 +1,49 @@
+id: wordpress-wordpress-seo
+
+info:
+  name: Yoast SEO – Advanced SEO with real-time guidance and built-in AI Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/wordpress-seo/
+  metadata:
+    plugin_namespace: wordpress-seo
+    wpscan: https://wpscan.com/plugin/wordpress-seo
+  tags: tech,wordpress,wp-plugin,top-100,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/wordpress-seo/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/wordpress-seo.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 4a0a004730450221009146bbb6d40c655705f6604d62503a2ab3c4eb17684a52637db3f311155641e802200d863e6f57bba52caf305b26914a5ddb2ecff454dce8fcd8cabe6e31af9422ee:922c64590222798bb761d5b6d8e72950

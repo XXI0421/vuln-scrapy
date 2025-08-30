@@ -1,0 +1,49 @@
+id: wordpress-gutenberg
+
+info:
+  name: Gutenberg Detection
+  author: ricardomaia
+  severity: info
+  reference:
+    - https://wordpress.org/plugins/gutenberg/
+  metadata:
+    plugin_namespace: gutenberg
+    wpscan: https://wpscan.com/plugin/gutenberg
+  tags: tech,wordpress,wp-plugin,top-200
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/gutenberg/readme.txt"
+
+    payloads:
+      last_version: helpers/wordpress/plugins/gutenberg.txt
+
+    extractors:
+      - type: regex
+        part: body
+        internal: true
+        name: internal_detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+      - type: regex
+        part: body
+        name: detected_version
+        group: 1
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        name: "outdated_version"
+        dsl:
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'
+# digest: 4b0a0048304602210096aa46a928e109199a2aab7cea802981c0bd3464ae112e07179e7583ef7c761a022100cfc7b8ed42dced7a7a2ce4c73ef70a49c0312a9601b8fcea8fc69c78c4253a9c:922c64590222798bb761d5b6d8e72950

@@ -1,7 +1,7 @@
 # FOFA 账户
 fofa:
-  email: "om2bg0xgmj9njrxlulz57d-sbtoe@open_wechat" # 你的fofa-email
-  key: "d2a651b25c1ede0c3cddf8c2fd815faa" # 你的fofa-key
+  email: "xxx" # 你的fofa-email
+  key: "xxx" # 你的fofa-key
   query: 'app="Apache-Solr" && port="8983" && is_honeypot="false"' # 查询语句
   size: 50
   fields: "ip,port,protocol,host,title,banner"
